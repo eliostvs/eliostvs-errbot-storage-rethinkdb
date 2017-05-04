@@ -1,0 +1,9 @@
+[Core]
+Name = StorageTester
+Module = storage_tester
+
+[Documentation]
+Description = Tests automatically if a storage backend is OK.
+
+[Python]
+Version = 3

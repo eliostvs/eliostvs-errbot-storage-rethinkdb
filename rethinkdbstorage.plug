@@ -1,0 +1,6 @@
+[Core]
+Name = RethinkDB
+Module = rethinkdbstorage
+
+[Documentation]
+Description = This is the storage plugin for RethinkDB.
