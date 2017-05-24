@@ -28,3 +28,6 @@ db-port:
 
 test: clean
 	@PYTHONPATH=$(CURDIR) pytest $(test) --port=$(shell docker port $(DOCKER_IMAGE_NAME) $(PORT) | cut -f 2 -d :)
+
+install:
+	pip install -r dev-requirements.txt

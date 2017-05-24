@@ -84,9 +84,13 @@ class RethinkDBStorage(StorageBase):
 
         logger.debug('action=addKey name=%s value=%s', key, encoded_value)
 
-        result = self.table.insert({'id': key, 'value': encoded_value}).run(self.conn)
+        result = self.table.insert({'id': key, 'value': encoded_value}, conflict="update").run(self.conn)
 
-        assert result['inserted'] == 1, StorageException("key %s not inserted " % key)
+        assert self._was_successful(result) is True, StorageException("key %s not inserted " % key)
+
+    @staticmethod
+    def _was_successful(result):
+        return any([result['inserted'], result['replaced'], result['unchanged']])
 
     def len(self) -> int:
         return self.table.count().run(self.conn)

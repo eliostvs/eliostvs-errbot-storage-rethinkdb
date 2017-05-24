@@ -1,2 +1,3 @@
 jsonpickle==0.9.4
 rethinkdb==2.3.0.post6
+errbot==5.0.1
